@@ -11,26 +11,44 @@ import {
     Center
 } from '@chakra-ui/react'
 import {ArrowRight} from 'react-feather'
-import {atom, selector, useRecoilState, useRecoilValue} from 'recoil'
+import {atom, selector, useRecoilState} from 'recoil'
 
 const exchangeRate = 0.83
 
-const usdAtom = atom({
+const usdAtom = atom<number>({
     key: 'usd',
     default: 0
 })
 
-const eurSelector = selector({
+const eurSelector = selector<number>({
     key: 'eur',
     get: ({ get }) => {
-        const usd = get(usdAtom);
+        let usd = get(usdAtom);
+
+        const commmissionEnabled = get(commissionEnabledAtom);
+        if (commmissionEnabled) {
+            const commission = get(commissionAtom);
+            usd = removeCommission(usd, commission);
+        }
+
         return usd * exchangeRate;
+    },
+    set: ({ set, get }, newEurValue) => {
+        let newUsdValue = (newEurValue as number) / exchangeRate;
+
+        const commmissionEnabled = get(commissionEnabledAtom);
+        if (commmissionEnabled) {
+            const commission = get(commissionAtom);
+            newUsdValue = addCommission(newUsdValue, commission);
+        }
+
+        set(usdAtom, newUsdValue);
     }
 })
 
 export const Selectors = () => {
     const [usd, setUsd] = useRecoilState(usdAtom);
-    const eur = useRecoilValue(eurSelector);
+    const [eur, setEur] = useRecoilState(eurSelector);
     return (
         <Center>
             <Box p={10}>
@@ -39,7 +57,7 @@ export const Selectors = () => {
                 </Heading>
                 <InputStack>
                     <CurrencyInput label="usd" amount={usd} onChange={usd => setUsd(usd)}/>
-                    <CurrencyInput label="eur" amount={eur} />
+                    <CurrencyInput label="eur" amount={eur} onChange={eur => setEur(eur)}/>
                 </InputStack>
                 <Commission />
             </Box>
