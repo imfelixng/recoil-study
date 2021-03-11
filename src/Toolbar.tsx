@@ -1,13 +1,10 @@
 import {Icon, IconButton, VStack} from '@chakra-ui/react'
 import {Square} from 'react-feather'
 import { useSetRecoilState } from 'recoil'
-import { elementsState } from './Canvas'
+import { elementsState } from './components/Rectangle/Rectangle';
 
 export const Toolbar = () => {
     const setElements = useSetRecoilState(elementsState);
-
-
-
     return (
         <VStack
             position="absolute"
