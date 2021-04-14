@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import Canvas from './Canvas'
@@ -7,10 +7,13 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Atoms from './examples/Atoms'
 import { RecoilRoot } from 'recoil'
 import { Selectors } from './examples/Selectors'
+import RecoilLogger from 'recoil-logger';
+import { Async } from './examples/Async'
 
 ReactDOM.render(
     <React.StrictMode>
         <RecoilRoot>
+            <RecoilLogger />
             <ChakraProvider>
                 <Router>
                     <Switch>
@@ -19,6 +22,9 @@ ReactDOM.render(
                         </Route>
                         <Route path="/examples/selectors">
                             <Selectors />
+                        </Route>
+                        <Route path="/examples/async">
+                            <Async />
                         </Route>
                         <Route>
                             <Canvas />

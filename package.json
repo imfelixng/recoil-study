@@ -57,6 +57,7 @@
     ]
   },
   "devDependencies": {
-    "@types/recoilize": "^0.8.0"
+    "@types/recoilize": "^0.8.0",
+    "recoil-logger": "^1.2.0"
   }
 }
