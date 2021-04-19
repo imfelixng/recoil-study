@@ -1,3 +1,4 @@
+import React from 'react'
 import {Box, Flex} from '@chakra-ui/react'
 
 export const PageContainer: React.FC<{onClick: () => void}> = ({onClick, children}) => {

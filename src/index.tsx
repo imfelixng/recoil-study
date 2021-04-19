@@ -1,14 +1,14 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import Canvas from './Canvas'
-import { ChakraProvider } from '@chakra-ui/react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import {ChakraProvider} from '@chakra-ui/react'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Atoms from './examples/Atoms'
-import { RecoilRoot } from 'recoil'
-import { Selectors } from './examples/Selectors'
-import RecoilLogger from 'recoil-logger';
-import { Async } from './examples/Async'
+import {RecoilRoot} from 'recoil'
+import {Selectors} from './examples/Selectors'
+import RecoilLogger from 'recoil-logger'
+import {Async} from './examples/Async'
 
 ReactDOM.render(
     <React.StrictMode>
