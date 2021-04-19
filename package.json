@@ -1,5 +1,5 @@
 {
-  "name": "recoil-course",
+  "name": "recoil-study",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -60,5 +60,7 @@
   "devDependencies": {
     "@types/recoilize": "^0.8.0",
     "recoil-logger": "^1.2.0"
-  }
+  },
+  "keywords": [],
+  "description": ""
 }
