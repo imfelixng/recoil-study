@@ -1,13 +1,12 @@
-import { useRecoilValue, useSetRecoilState } from 'recoil'
-import { elementsState, Rectangle, selectedElementState } from './components/Rectangle/Rectangle'
-import { EditProperties } from './EditProperties';
-import { PageContainer } from './PageContainer'
-import { Toolbar } from './Toolbar'
-
+import {useRecoilValue, useSetRecoilState} from 'recoil'
+import {Rectangle, selectedElementState} from './components/Rectangle/Rectangle'
+import {EditProperties} from './EditProperties'
+import {PageContainer} from './PageContainer'
+import {elementsState, Toolbar} from './Toolbar'
 
 function Canvas() {
-    const setSelectedElement = useSetRecoilState(selectedElementState);
-    const elements = useRecoilValue(elementsState);
+    const setSelectedElement = useSetRecoilState(selectedElementState)
+    const elements = useRecoilValue(elementsState)
 
     return (
         <PageContainer

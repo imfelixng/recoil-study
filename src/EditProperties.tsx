@@ -5,7 +5,7 @@ import {elementState, selectedElementState} from './components/Rectangle/Rectang
 import {get as lodashGet, set as lodashSet} from 'lodash'
 import produce from 'immer'
 
-const editPropertyState = selectorFamily<number | null, {path: string; id: number}>({
+export const editPropertyState = selectorFamily<any, {path: string; id: number}>({
     key: 'editProperty',
     get: ({path, id}) => ({get}) => {
         const element = get(elementState(id))
