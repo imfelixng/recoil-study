@@ -22,7 +22,12 @@ const idsState = atom<number[]>({
     key: 'ids',
     default: [],
     effects_UNSTABLE: [
-        () => {
+        ({setSelf}) => {
+            const itemsPromise = shoppingListAPI.getItems().then((items) => {
+                return Object.keys(items).map((id) => parseInt(id, 10))
+            })
+
+            setSelf(itemsPromise)
             // TODO: Fetch a list of item ids from the server
         },
     ],
@@ -32,10 +37,24 @@ const itemState = atomFamily<ItemType, number>({
     key: 'item',
     default: {label: '', checked: false},
     effects_UNSTABLE: (id) => [
-        () => {
+        ({onSet, setSelf}) => {
+            const itemPromise = shoppingListAPI.getItem(id).then((item) => {
+                if (item === undefined) return new DefaultValue()
+                return item
+            })
+
+            setSelf(itemPromise)
             // TODO:
             // 1. Fetch individual item data from the API and initialise the atoms
             // 2. Update/create individual item data via the API
+
+            onSet((item) => {
+                if (item instanceof DefaultValue) {
+                    shoppingListAPI.deleteItem(id)
+                } else {
+                    shoppingListAPI.createOrUpdateItem(id, item)
+                }
+            })
         },
     ],
 })
