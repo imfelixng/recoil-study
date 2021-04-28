@@ -8,6 +8,8 @@ import Atoms from './examples/Atoms'
 import {RecoilRoot} from 'recoil'
 import {Selectors} from './examples/Selectors'
 import {AtomEffects} from './examples/AtomEffects'
+import {AtomEffectFamilies} from './examples/AtomEffectFamilies'
+import {AtomEffectAsync} from './examples/AtomEffectAsync'
 import RecoilLogger from 'recoil-logger'
 import {Async} from './examples/Async'
 
@@ -29,6 +31,12 @@ ReactDOM.render(
                         </Route>
                         <Route path="/examples/atomEffects">
                             <AtomEffects />
+                        </Route>
+                        <Route path="/examples/atomEffectFamilies">
+                            <AtomEffectFamilies />
+                        </Route>
+                        <Route path="/examples/atomEffectAsync">
+                            <AtomEffectAsync />
                         </Route>
                         <Route>
                             <Canvas />
