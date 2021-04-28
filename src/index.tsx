@@ -7,6 +7,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Atoms from './examples/Atoms'
 import {RecoilRoot} from 'recoil'
 import {Selectors} from './examples/Selectors'
+import {AtomEffects} from './examples/AtomEffects'
 import RecoilLogger from 'recoil-logger'
 import {Async} from './examples/Async'
 
@@ -25,6 +26,9 @@ ReactDOM.render(
                         </Route>
                         <Route path="/examples/async">
                             <Async />
+                        </Route>
+                        <Route path="/examples/atomEffects">
+                            <AtomEffects />
                         </Route>
                         <Route>
                             <Canvas />
